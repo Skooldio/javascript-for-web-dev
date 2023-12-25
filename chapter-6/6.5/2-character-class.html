@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 2. Character Class
+    let roomStr = 'Room 123'
+    let abcStr = 'A'
+    let regexDigit = /\d+/ // ตัวเลข
+    let regexNonDigit = /\D+/ // ไม่ใช่ตัวเลข
+    let regexCharacter = /[ABC]/ // อยู่ใน 'A', 'B' หรือ 'C'
+    let regexStartCharacter = /[^ABC]/ // ไม่อยู่ใน 'A', 'B' หรือ 'C'
+
+    console.log(regexDigit.test(roomStr)) // true
+    console.log(regexNonDigit.test(abcStr)) // true
+    console.log(regexCharacter.test(roomStr)) // false
+    console.log(regexCharacter.test(abcStr)) // true
+    console.log(regexStartCharacter.test(roomStr)) // true
+    console.log(regexStartCharacter.test(abcStr)) // false
+  </script>
+</body>
+</html>

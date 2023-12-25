@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <img src="test.jpg">
+  <input id="test" type="text" data-name="example" value="test">
+
+  <script>
+    const inputElem = document.querySelector('input')
+    const imgElem = document.querySelector('img')
+
+    // แทนค่าใหม่ใน input
+    inputElem.setAttribute('value', 'newValue')
+    inputElem.dataset.name = 'test'
+
+    // แทนค่าใหม่ใน img
+    imgElem.setAttribute('src', 'new-image.jpg')
+  </script>
+</body>
+</html>

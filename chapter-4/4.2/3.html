@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const doFirstTask = () => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('First task done')
+          resolve()
+        }, 1000)
+      })
+    }
+
+    const doSecondTask = () => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('Second task done')
+          resolve()
+        }, 1000)
+      })
+    }
+
+    const doThirdTask = () => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('Third task done')
+          resolve()
+        }, 1000)
+      })
+    }
+
+    // Callback
+    doFirstTask(() => {
+      doSecondTask(() => {
+        doThirdTask(() => {
+          console.log('All tasks completed.')
+        })
+      })
+    })
+
+    // Promise
+    doFirstTask()
+      .then(doSecondTask)
+      .then(doThirdTask)
+      .then(() => {
+        console.log('All tasks completed.')
+      })
+      .catch((error) => {
+        console.error('An error occurred:', error)
+      })
+    
+    // Async / Await
+    const main = async () => {
+      try {
+        await doFirstTask()
+        await doSecondTask()
+        await doThirdTask()
+        console.log('All tasks completed.')
+      } catch (error) {
+        console.error('An error occurred:', error)
+      }
+    }
+
+    main()
+  </script>
+</body>
+</html>

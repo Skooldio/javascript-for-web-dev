@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+  const loadData = async () => {
+    try {
+      const apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto'
+      const response = await axios.get(apiUrl)
+      console.log('data', response.data)
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
+  loadData()
+
+  const postData = async (data) => {
+    try {
+      const apiUrl = 'https://64ffc48218c34dee0cd3ef15.mockapi.io/todos'
+      const response = await axios.post(apiUrl, data)
+      console.log('data', response.data)
+    } catch (error) {
+      console.error('error', error.message)
+    }
+  }
+
+  postData({
+    name: 'test new data',
+    status: 'pending'
+  })
+  </script>
+</body>
+</html>

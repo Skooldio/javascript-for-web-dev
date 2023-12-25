@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Math Object Example</title>
+</head>
+<body>
+
+  <button onclick="performMathOperations()">Perform Math Operations</button>
+  <div id="output"></div>
+
+  <script>
+    const performMathOperations = () => {
+      const output = document.getElementById('output')
+      const value = 9.7
+
+      let htmlContent = `
+        <p>Math.round(${value}): ${Math.round(value)}</p>
+        <p>Math.ceil(${value}): ${Math.ceil(value)}</p>
+        <p>Math.floor(${value}): ${Math.floor(value)}</p>
+        <p>Math.sqrt(${value}): ${Math.sqrt(value)}</p>
+        <p>Math.abs(-${value}): ${Math.abs(-value)}</p>
+        <p>Math.pow(${value}, 2): ${Math.pow(value, 2)}</p>
+        <p>Math.min(1, 2, ${value}, -5, 10): ${Math.min(1, 2, value, -5, 10)}</p>
+        <p>Math.max(1, 2, ${value}, -5, 10): ${Math.max(1, 2, value, -5, 10)}</p>
+        <p>Math.random(): ${Math.random()}</p>
+        <p>Math.PI: ${Math.PI}</p>
+        <p>Math.E: ${Math.E}</p>
+      `
+
+      output.innerHTML = htmlContent
+    }
+  </script>
+</body>
+</html>

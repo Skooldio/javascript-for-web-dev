@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let fooStr = 'foo bar foo foo foo foo'
+    let regexRange = /[a-z]/ // เจอตัวอักษร a-z ตัวใดตัวหนึ่ง
+    let regexNotRange = /[^a-z]/ // ไม่เจอตัวอักษร a-z ในตัวอักษรนี้
+    let regexQuantified = /(foo){2,3}/ // เจอ foo ตั้งแต่ 2 ครั้งขึ้นไปแต่ไม่เกิน 3 ครั้ง
+
+    console.log(regexRange.test(fooStr)) // true
+    console.log(regexNotRange.test(fooStr)) // true
+    console.log(regexQuantified.test(fooStr)) // false
+
+    // Combine case
+    let regexCombine = /([0-9a-fA-F]{2}\:){5}[0-9a-fA-F]{2}/
+    let macAddress = '01:23:45:67:89:ab'
+    console.log(regexCombine.test(macAddress)) // true
+  </script>
+</body>
+</html>

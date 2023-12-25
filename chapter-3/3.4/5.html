@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    .button { padding: 10px; }
+    .active {
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <button
+    class="button"
+    onclick="changeActive(event)">Change</button>
+  <script>
+    const changeActive = (event) => {
+      const buttonElem = event.target
+      buttonElem.classList.toggle('active')
+    }
+  </script>
+</body>
+</html>

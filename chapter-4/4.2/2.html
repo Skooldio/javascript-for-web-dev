@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const doFirstTask = (callback) => {
+      setTimeout(() => {
+        console.log('First task done')
+        callback()
+      }, 1000)
+    }
+
+    const doSecondTask = (callback) => {
+      setTimeout(() => {
+        console.log('Second task done')
+        callback()
+      }, 1000)
+    }
+
+    const doThirdTask = (callback) => {
+      setTimeout(() => {
+        console.log('Third task done')
+        callback()
+      }, 1000)
+    }
+
+    doFirstTask(() => {
+      doSecondTask(() => {
+        doThirdTask(() => {
+          console.log('All tasks completed.')
+        })
+      })
+    })
+  </script>
+</body>
+</html>

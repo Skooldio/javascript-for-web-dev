@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Welcome to Our Website!</h1>
+  <p>You have visited this page <span id="visitCount">0</span> times.</p>
+
+  <script>
+    const setCookie = (name, value, seconds) => {
+      const date = new Date()
+      date.setTime(date.getTime() + (seconds * 1000))
+      // ถ้าอยากเป็นหลักวัน = (days * 24 * 60 * 60 * 1000)
+      const expires = `expires=${date.toUTCString()}`
+      document.cookie = `${name}=${value};${expires};path=/`
+    }
+
+    const getCookie = (name) => {
+      const nameEQ = `${name}=`
+      const ca = document.cookie.split(';')
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim()
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length)
+      }
+      return null
+    }
+
+    window.onload = () => {
+      let count = getCookie('visitCount')
+      count = count ? parseInt(count) : 0
+      count++
+      setCookie('visitCount', count, 5)
+      document.getElementById('visitCount').textContent = count
+    }
+  </script>
+</body>
+</html>

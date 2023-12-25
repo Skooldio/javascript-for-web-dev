@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let fooStr = 'foo bar foo foo foo foo'
+
+    let regexCapture = /(foo)/ // เจอ string "foo" ใน string นี้
+    let regexOr = /(foo|bar|baz)/ // เจอ string "foo", "bar" หรือ "baz" ใน string นี้
+
+    console.log(regexCapture.test(fooStr)) // true
+    console.log(regexOr.test(fooStr)) // true
+    console.log(regexQuantified.test(fooStr)) // false
+  </script>
+</body>
+</html>

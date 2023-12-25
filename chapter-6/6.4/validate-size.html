@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>File Validation Example</title>
+</head>
+<body>
+
+<form>
+  <input type="file" id="fileInput" name="file" onchange="validateFile(this)" />
+</form>
+
+<script>
+  const validateFile = (input) => {
+    const maxFileSize = 1048576 // 1MB in bytes
+    const file = input.files[0]
+
+    // Check file exist ?
+    if (!file) {
+      alert('File not found.')
+      return false
+    }
+
+    // Check file size
+    if (file.size > maxFileSize) {
+      alert('File is too large. Maximum allowed size is 1MB.')
+      input.value = ''
+      return false
+    }
+
+    // If validation passes
+    alert('File is valid!')
+
+    return true
+  }
+</script>
+
+</body>
+</html>

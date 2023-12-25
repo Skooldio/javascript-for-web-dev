@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Single File Upload Example</title>
+</head>
+<body>
+
+<form>
+  <input type="file" id="fileInput" name="file" onchange="handleFileSelect(event)" />
+  <div id="fileDetails"></div>
+</form>
+
+<script>
+  function handleFileSelect(evt) {
+    const file = evt.target.files[0] // Get the first file
+
+    if (file) {
+      const output = document.getElementById('fileDetails')
+      const details = `
+        <strong>File name:</strong> ${escape(file.name)}<br>
+        <strong>File type:</strong> ${file.type || 'n/a'}<br>
+        <strong>File size:</strong> ${file.size} bytes<br>
+        <strong>Last modified:</strong> ${
+          file.lastModifiedDate ? file.lastModifiedDate.toLocaleDateString() : 'n/a'
+        }<br>
+      `
+
+      output.innerHTML = details
+    } else {
+      output.innerHTML = 'No file selected.'
+    }
+  }
+</script>
+
+</body>
+</html>

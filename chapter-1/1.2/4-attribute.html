@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text">
+
+  <input type="radio" name="gender" value="ชาย">
+  <input type="radio" name="gender" value="หญิง">
+
+  <div class="primary">Primary</div>
+
+  <button>Active</button>
+  <button disabled>Disable</button>
+
+  <script>
+    console.log(document.querySelector('input[type=text]'))
+    console.log(document.querySelectorAll('input[type=gender]'))
+    console.log(document.querySelector('div[class=primary]'))
+    console.log(document.querySelector('button[disabled]'))
+  </script>
+</body>
+</html>

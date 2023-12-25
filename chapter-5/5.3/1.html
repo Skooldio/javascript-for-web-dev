@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // console.log(window.navigator.userAgent)
+    // console.log(window.navigator.language)
+
+    // if (window.navigator.cookieEnabled) {
+    //   console.log('Cookies are enabled.')
+    // } else {
+    //   console.log('Cookies are disabled.')
+    // }
+  </script>
+  <script>
+    // เช็ค feature location
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(position => {
+        const lat = position.coords.latitude
+        const lng = position.coords.longitude
+        console.log(`Latitude: ${lat}, Longitude: ${lng}`)
+      }, error => {
+        console.error('Error obtaining geolocation:', error)
+      })
+    } else {
+      console.log('Geolocation is not supported by your browser.')
+    }
+
+    // เช็ค feature serviceWorker
+    // if ('serviceWorker' in navigator) {
+    //   console.log('Service workers are supported')
+    //   // Register a service worker
+    //   navigator.serviceWorker.register('/sw.js').then((registration) => {
+    //     console.log('Service Worker', registration.scope)
+    //   }).catch(function(error) {
+    //     console.log('error', error)
+    //   })
+    // } else {
+    //   console.log('Service workers are not supported')
+    // }
+  </script>
+</body>
+</html>

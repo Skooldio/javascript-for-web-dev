@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    .btn-blue {
+      padding: 10px;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <!-- ใส่ style วิธีที่ 1 ด้วย class -->
+  <button>Text</button>
+
+  <script>
+    const buttonElem = document.querySelector('button')
+
+    // เพิ่ม class btn-blue ลง button
+    buttonElem.classList.add('btn-blue')
+
+    // ดึงชื่อ class ทั้งหมดของ button มา, ['btn-blue']
+    console.log(buttonElem.classList)
+  </script>
+</body>
+</html>

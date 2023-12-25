@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>File Upload Example</title>
+</head>
+<body>
+
+<form>
+  <input
+    type="file"
+    name="files"
+    onchange="handleFileSelect(event)"
+  />
+</form>
+
+<script>
+  function handleFileSelect(evt) {
+    const files = evt.target.files
+    console.log('files', files)
+  }
+</script>
+
+</body>
+</html>

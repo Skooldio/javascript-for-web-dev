@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Date and Time Example</title>
+</head>
+<body>
+
+<button onclick="showDateTimeInfo()">Show Date and Time Info</button>
+<div id="output"></div>
+
+<script>
+  const showDateTimeInfo = () => {
+    const now = new Date()
+
+    const output = document.getElementById('output')
+    let htmlContent = `
+      <p>Current Date and Time: ${now}</p>
+      <p>Locale Date and Time: ${now.toLocaleString()}</p>
+      <p>UTC Date and Time: ${now.toUTCString()}</p>
+      <p>ISO Date and Time: ${now.toISOString()}</p>
+      <p>Timestamp (milliseconds since January 1, 1970): ${now.getTime()}</p>
+      <p>Day of the Week: ${now.getDay()} (0=Sunday, 1=Monday, ..., 6=Saturday)</p>
+      <p>Date: ${now.getDate()}</p>
+      <p>Month: ${now.getMonth()} (0=January, 1=February, ..., 11=December)</p>
+      <p>Year: ${now.getFullYear()}</p>
+      <p>Hours: ${now.getHours()}</p>
+      <p>Minutes: ${now.getMinutes()}</p>
+      <p>Seconds: ${now.getSeconds()}</p>
+    `
+    output.innerHTML = htmlContent
+  }
+</script>
+
+</body>
+</html>

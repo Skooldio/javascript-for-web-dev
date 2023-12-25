@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let name = 'Captain Jack Sparrow'
+
+    let regexPositiveLookahead = /Jack(?= Sparrow)/ // Jack ต้องตามด้วย Sparrow เท่านั้น
+    let regexNegativeLookahead = /Jack(?! Sparrow)/ // Jack ต้องไม่ตามด้วย Sparrow เท่านั้น
+    let regexPositiveLookbehind = /(?<=Captain )Jack/ // Jack ต้องอยู่หลัง Captain เท่านั้น
+    let regexNegativeLookbehind = /(?<!Captain )Jack/ // Jack ต้องไม่อยู่หลัง Captain เท่านั้น
+
+    console.log(regexPositiveLookahead.test(name)) // true
+    console.log(regexNegativeLookahead.test(name)) // false
+    console.log(regexPositiveLookbehind.test(name)) // true
+    console.log(regexNegativeLookbehind.test(name)) // false
+
+  </script>
+</body>
+</html>

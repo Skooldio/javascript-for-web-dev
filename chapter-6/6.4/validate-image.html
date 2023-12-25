@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>File Extension and Image Dimension Validation</title>
+</head>
+<body>
+
+<form>
+  <div>
+    <img id="imagePreview" src="">
+  </div>
+  <input type="file" id="fileInput" name="file" accept="image/*" onchange="validateImage(this)" />
+</form>
+
+<script>
+  const imagePreview = document.getElementById('imagePreview')
+  const validateImage = (input) => {
+    const file = input.files[0]
+    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i
+
+    if (!file) {
+      alert('File not found.')
+      return false
+    }
+
+    // Check file extension
+    if (!allowedExtensions.exec(file.name)) {
+      alert('Invalid file type. Only JPG, JPEG, PNG, and GIF files are allowed.')
+      input.value = '' // Clear the file input
+      imagePreview.src = ''
+      return false
+    }
+
+    // เพิ่มตัว Check image dimensions 
+    const img = new Image()
+    img.onload = (e) => {
+      const width = img.naturalWidth,
+            height = img.naturalHeight
+
+      // ขนาดภาพต้องไม่เกินขนาด 1920 x 1080)
+      const maxWidth = 1920,
+            maxHeight = 1080
+
+      console.log('width', width)
+      console.log('height', height)
+
+      // ถ้าขนาดภาพเกิน = alert บอก และทำการเคลียร์ภาพและ input ออก
+      if (width > maxWidth || height > maxHeight) {
+        alert(`Image dimensions must be within ${maxWidth}x${maxHeight} pixels.`)
+        input.value = ''
+        imagePreview.src = ''
+        return false
+      }
+
+      // Validate ทุกอย่างถูกต้อง = แสดงผลภาพออกมาได้
+      imagePreview.src = img.src
+    }
+
+    // handle error ขณะ upload image
+    img.onerror = () => {
+      alert('There was an error loading the image.')
+      input.value = ''
+    }
+
+    // เพิ่มตัวอ่านไฟล์เข้ามา
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      // นำภาพที่อ่านได้ส่งไปยัง Object image
+      img.src = e.target.result
+    }
+    reader.readAsDataURL(file)
+  }
+</script>
+
+</body>
+</html>

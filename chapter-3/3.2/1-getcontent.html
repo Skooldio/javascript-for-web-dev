@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="example">
+    Hello <span style="display: none;">World</span>
+  </div>
+  <script>
+    let example = document.getElementById('example')
+    console.log(example.innerText) // Hello
+    console.log(example.textContent) // Hello world
+    console.log(example.innerHTML)
+    // Hello <span style="display: none;">World</span>
+  </script>
+</body>
+</html>

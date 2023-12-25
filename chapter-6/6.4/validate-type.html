@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>File Validation Example</title>
+</head>
+<body>
+
+<form>
+  <input type="file" id="fileInput" name="file" onchange="validateFile(this)" />
+</form>
+
+<script>
+  const validateFile = (input) => {
+    const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf']
+    const file = input.files[0]
+
+    // Check file exist ?
+    if (!file) {
+      alert('File not found.')
+      return false
+    }
+
+    // Check file type
+    if (!allowedTypes.includes(file.type)) {
+      alert('Invalid file type. Allowed types are JPEG, PNG, and PDF.')
+      input.value = ''
+      return false
+    }
+
+    // If validation passes
+    alert('File is valid!')
+
+    return true
+  }
+</script>
+
+</body>
+</html>

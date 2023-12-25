@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Set cookie
+    document.cookie = "userToken=abc123; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/"
+
+    // Get cookie
+    let cookieValue = document.cookie
+
+    // Delete cookie by setting expiry date in the past
+    document.cookie = "userToken=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/"
+
+  </script>
+</body>
+</html>

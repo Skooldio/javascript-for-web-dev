@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="content">
+    Hello <b>"Your name"</b>
+  </div>
+  Your name: <input type="text">
+  <button onclick="submitName()">Submit</button>
+
+  <script>
+    const submitName = () => {
+      const nameElem = document.querySelector('input[type=text]')
+      const contentElem = document.getElementById('content')
+      contentElem.innerHTML = `
+        Hello <b>${nameElem.value}</b>
+      `
+    }
+  </script>
+</body>
+</html>

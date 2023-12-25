@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="newBtn">Click 2</button>
+  <script>
+    const newBtnElement = document.getElementById('newBtn')
+    // เพิ่ม Event เข้าไป
+    const newClick = () => {
+      console.log('new click 1')
+    }
+    newBtnElement.addEventListener('click', newClick)
+    // ลบ Event ออกด้วย removeEventListener
+    newBtnElement.removeEventListener('click', newClick)
+  </script>
+</body>
+</html>

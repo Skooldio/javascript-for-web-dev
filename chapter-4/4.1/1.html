@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    console.log('operation 1')
+
+    // callback function
+    const newFunction = () => {
+      console.log('operation 2')
+    }
+    // ส่ง function เข้าไป และให้ทำงานในอีก 1 วินาที
+    setTimeout(newFunction, 1000)
+
+    // ส่ง function เข้าไป และให้ทำงานทุกๆ 1 วินาที
+    setInterval(newFunction, 1000)
+
+    // ส่ง function เข้าไป และให้ทำงานเมื่อ button โดน click 
+    button.addEventListener('click', newFunction)
+  </script>
+</body>
+</html>

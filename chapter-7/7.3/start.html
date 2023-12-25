@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Set item in session storage
+    sessionStorage.setItem('sessionKey', '123456')
+
+    // Get item from session storage
+    let sessionValue = sessionStorage.getItem('sessionKey')
+
+    // Remove item from session storage
+    sessionStorage.removeItem('sessionKey')
+
+    // Clear all session storage
+    sessionStorage.clear()
+  </script>
+</body>
+</html>

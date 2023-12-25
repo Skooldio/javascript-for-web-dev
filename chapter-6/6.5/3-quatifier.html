@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let bo1 = 'bo'
+
+    let regexZero = /bo*/ // b แล้วตามด้วย o กี่ตัวก็ได้ (หรือจะไม่มีก็ได้)
+    let regexOne = /bo+/ // b แล้วตามด้วย o อย่างน้อย 1 ตัว
+    let regexZeroOrOne = /bo?/ // b แล้วตามด้วย o แค่ 1 ตัว (หรือไม่มีก็ได้)
+    let regexExact = /bo{2}/ // b แล้วต้องตามด้วย o 2 ตัว
+    let regexAtLeast = /bo{2,}/ // b แล้วตามด้วย o อย่างน้อย 2 ตัวขึ้นไป
+    let regexBetween = /bo{2,4}/ // b แล้วตามด้วย o อย่างน้อย 2 ตัว แต่ไม่เกิน 4 ตัว
+
+    console.log(regexZero.test(bo1)) // true
+    console.log(regexOne.test(bo1)) // true
+    console.log(regexZeroOrOne.test(bo1)) // true
+    console.log(regexExact.test(bo1)) // false
+    console.log(regexAtLeast.test(bo1)) // false
+    console.log(regexBetween.test(bo1)) // false
+
+  </script>
+</body>
+</html>

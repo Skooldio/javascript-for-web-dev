@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let db
+    let request = window.indexedDB.open("MyTestDatabase", 1)
+
+    request.onerror = function(event) {
+      // Handle errors.
+    }
+
+    request.onupgradeneeded = function(event) {
+      db = event.target.result
+
+      // Create an object store to hold information about our customers. We're
+      // going to use "ssn" as our key path because it's guaranteed to be
+      // unique.
+      let objectStore = db.createObjectStore("customers", { keyPath: "ssn" })
+
+      // Create an index to search customers by name. We may have duplicates
+      // so we can't use a unique index.
+      objectStore.createIndex("name", "name", { unique: false })
+
+      // Create an index to search customers by email. We want to ensure that
+      // no two customers have the same email, so use a unique index.
+      objectStore.createIndex("email", "email", { unique: true })
+    }
+
+    request.onsuccess = function(event) {
+      db = event.target.result
+      // Continue working with IndexedDB...
+    }
+  </script>
+</body>
+</html>

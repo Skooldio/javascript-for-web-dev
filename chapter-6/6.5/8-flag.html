@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let text = 'The THEre was a mix of tHe, The, and THE.'
+
+    let regexGlobal = /the/g // หา the ใน string (case sensitive)
+    let regexInsensitive = /the/i // หา the ใน string (case insensitive)
+    let regexGI = /the/gi // หา the ใน string (case insensitive) และเอา word ใส่ array ออกมา
+    console.log(regexGlobal.test(text)) // false
+    console.log(regexInsensitive.test(text)) // true
+    console.log(text.match(regexGI)) // ['The', 'THE', 'tHe', 'The', 'THE']
+
+    let text2 = 'Start of line\nand end of line.' // \n = การแบ่งขึ้นบรรทัดใหม่
+    let regexMultiline = /^and/m // หา and (ระหว่างบรรทัดได้)
+    console.log(regexMultiline.test(text2)) // true
+
+    let text3 = 'ก'
+    let regexUnicodeThai = /\u0E01/u // เช็ค Unicode สำหรับ 'ก'
+    console.log(regexUnicodeThai.test(text3)) // true
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input name="interest" type="checkbox" value="football">
+  <input name="interest" type="checkbox" value="game" checked>
+
+  <button>Other</button>
+  <button disabled>Disable</button>
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+
+  <script>
+    // <input name="interest" type="checkbox" value="game" checked>
+    console.log(document.querySelector('input[type=checkbox]:checked'))
+    // <button disabled>Disable</button>
+    console.log(document.querySelector('button:disabled'))
+    // <li>1</li>
+    console.log(document.querySelector('li:first-child'))
+  </script>
+</body>
+</html>

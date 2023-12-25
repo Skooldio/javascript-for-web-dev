@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>IndexedDB Example</h1>
+  <div>
+    <input id="firstname" type="text">
+    <input id="lastname" type="text">
+  </div>
+  <button id="addButton">Add Data</button>
+  <button id="readButton">Read Data</button>
+  <div>
+    <div>See result</div>
+    <ul id="result"></ul>
+  </div>
+
+  <script>
+    const open = indexedDB.open('Example', 1)
+
+    // สร้าง database indexedDB
+    open.onupgradeneeded = (event) => {
+      const db = open.result
+      const store = db.createObjectStore('users', {
+        keyPath: 'id',
+        autoIncrement: true
+      })
+    }
+  </script>
+  <script>
+    /* ต่อจาก code อันเดิม */
+    const firstname = document.getElementById('firstname')
+    const lastname = document.getElementById('lastname')
+    const result = document.getElementById('result')
+
+    open.onsuccess = () => {
+      // Add some data
+      document.getElementById('addButton').onclick = () => {
+        // Start a new transaction
+        const db = open.result
+        const tx = db.transaction('users', 'readwrite')
+        const store = tx.objectStore('users')
+
+        store.add({
+          firstname: firstname.value,
+          lastname: lastname.value
+        })
+        tx.oncomplete = () => {
+          console.log('Stored data added!')
+        }
+      }
+
+      // Query the data
+      document.getElementById('readButton').onclick = () => {
+          // Start a new transaction
+        const db = open.result
+        const tx = db.transaction('users', 'readwrite')
+        const store = tx.objectStore('users')
+        const getUsers = store.getAll()
+        result.innerHTML = ''
+        getUsers.onsuccess = () => {
+          let resultListDOM = ''
+          getUsers.result.forEach(user => {
+            resultListDOM += `<li>${user.firstname} ${user.lastname}</li>`
+          })
+          result.innerHTML = resultListDOM
+        }
+      }
+    }
+  </script>
+</body>
+</html>

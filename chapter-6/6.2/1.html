@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form>
+    <!-- ว่าต้องใส่ require -->
+    <input type="text" required>
+
+    <!-- ต้องขนาดตัวอักษรตั้งแต่ 5 ขึ้นไปและไม่เกิน 15 -->
+    <input type="text" minlength="5" maxlength="15" required>
+
+    <!-- ใส่ตัวเลขระหว่่าง 10 - 100 -->
+    <input type="number" min="10" max="100">
+
+    <!-- ใส่ email ถูกต้องหรือไม่ (ด้วย type: email) -->
+    <input type="email">
+
+    <!-- ใส่ วันเดือนปี ในช่วงปี 2022 -->
+    <input type="date" min="2022-01-01" max="2022-12-31">
+
+    <!-- ใส่ url ให้ถูกต้อง (ด้วย type: url) -->
+    <input type="url">
+
+    <!-- ใส่ format เบอร์โทรให้ถูกต้อง (ด้วย pattern และ type: tel)-->
+    <input type="tel" pattern="^\d{3}-\d{3}-\d{4}$">
+
+    <button>Submit</button>
+  </form>
+ 
+  
+
+    <input type="text" name="username" pattern="[a-zA-Z0-9]+">
+
+    
+
+   
+
+  
+
+  <input type="checkbox" name="interest" value="coding" required> Coding
+  <input type="checkbox" name="interest" value="design"> Design
+</body>
+</html>

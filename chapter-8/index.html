@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="container">
+    <div id="start-game">
+      <button id="start-button">Start</button>
+    </div>
+
+    <div id="play-game" class="hidden">
+      <div>
+        Counter
+        <span id="counter">10</span> / 10
+      </div>
+      <div id="question" class="question">
+        _____
+      </div>
+      <div id="answer-button" class="answer">
+      </div>
+
+      <button id="restartgame-button">Restart new game</button>
+    </div>
+
+    <div id="end-game" class="hidden">
+      <div id="end-message"></div>
+      <button id="restart-button">Restart</button>
+    </div>
+  </section>
+
+  <script>
+    const startGameScene = document.getElementById('start-game')
+    const playGameScene = document.getElementById('play-game')
+    const endGameScene = document.getElementById('end-game')
+
+    // Start Scene
+    const startButton = document.getElementById('start-button')
+
+    // Game Play Scene
+    const questionDisplay = document.getElementById('question')
+    const answerButtonList = document.getElementById('answer-button')
+    const counterDisplay = document.getElementById('counter')
+    const restartGameButton = document.getElementById('restartgame-button')
+
+    // End Scene
+    const endMessageDisplay = document.getElementById('end-message')
+    const restartEndGameButton = document.getElementById('restart-button')
+
+    let Answer = ''
+    let state = ''
+    let counter = 10
+    let answerList = []
+
+    const endGamePlay = (displayText) => {
+      endMessageDisplay.innerText = displayText
+
+      alert(displayText)
+
+      playGameScene.classList.add('hidden')
+      playGameScene.classList.remove('play-center')
+      endGameScene.classList.remove('hidden')
+      localStorage.clear()
+      state = ''
+      answerList = []
+    }
+
+    const generateAnswerList = () => {
+      answerButtonList.innerHTML = ''
+
+      for (let i = 0; i < 26; i++) {
+        let letter = String.fromCharCode('A'.charCodeAt(0) + i)
+        let button = document.createElement('button')
+        button.innerText = letter
+
+        if (answerList.includes(letter.toLowerCase())) {
+          button.disabled = true
+        }
+
+        button.addEventListener('click', (event) => {
+          let currentLetter = event.target.innerText.toLowerCase()
+          console.log('currentLetter', currentLetter)
+          let currentQuestion = questionDisplay.innerText.split('')
+
+          for (let i = 0 ; i < Answer.length; i++) {
+            if (currentLetter === Answer[i]) {
+              console.log('found at', i)
+              currentQuestion[i] = currentLetter
+            }
+          }
+
+          currentAnswerQuestion = currentQuestion.join('')
+          localStorage.setItem('question', currentAnswerQuestion)
+          questionDisplay.innerText = currentAnswerQuestion
+
+          event.target.disabled = true
+          counter -= 1
+          counterDisplay.innerText = counter
+          answerList.push(currentLetter)
+
+          localStorage.setItem('counter', counter)
+          localStorage.setItem('answerList', JSON.stringify(answerList))
+
+          if (counter === 0) {
+            endGamePlay('Game Over')
+          }
+
+          if (currentAnswerQuestion === Answer) {
+            endGamePlay(`Successful ! Answer is ${Answer}`)
+          }
+        })
+        answerButtonList.appendChild(button)
+      }
+    }
+
+    const startGamePlay = async () => {
+      try {
+        if (state === 'playing') {
+          Answer = localStorage.getItem('Answer')
+
+          let selectedAnswer = localStorage.getItem('question')
+          questionDisplay.innerText = selectedAnswer
+
+          let currentCounter = localStorage.getItem('counter')
+          counterDisplay.innerText = currentCounter
+          counter = currentCounter
+
+          let answerListText = localStorage.getItem('answerList')
+          if (answerListText) {
+            answerList = JSON.parse(answerListText)
+          }
+          generateAnswerList()
+          return false
+        }
+        // 2. มีการเรียกใช้ API จาก https://pokeapi.co/ เพื่อนำข้อมูลชื่อ pokemon มาใช้ (Async API)
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
+
+        if (!response.ok) {
+          throw new Error('ไม่สามารถดึงข้อมูลออกมาได้')
+        }
+
+        const responseJSON = await response.json()
+        const randomIndex = Math.floor(Math.random() * responseJSON.results.length)
+
+        let selectedAnswer = responseJSON.results[randomIndex].name
+        Answer = selectedAnswer
+        state = 'playing'
+        selectedAnswer = selectedAnswer.replace(/./g, '_')
+
+        questionDisplay.innerText = selectedAnswer
+
+        console.log('selectedAnswer', selectedAnswer)
+        console.log('answer', Answer)
+
+        // สร้าง function สำหรับการเล่นเกม
+        counter = 10
+        counterDisplay.innerText = counter
+
+
+        // save state
+        localStorage.setItem('Answer', Answer)
+        localStorage.setItem('state', state)
+        localStorage.setItem('question', selectedAnswer)
+        localStorage.setItem('counter', counter)
+
+        generateAnswerList()
+
+      } catch (error) {
+        console.log('error', error)
+        alert('มีปัญหาขัดข้องจากการโหลดข้อมูล')
+      }
+    }
+
+    // 1. มีการแยก state ระหว่าง เริ่มเกม > กำลังเล่นเกม > จบเกม และการจัดการ Event ในแต่ละปุ่ม (DOM, Event)
+    startButton.addEventListener('click', () => {
+      startGameScene.classList.add('hidden')
+      playGameScene.classList.remove('hidden')
+      playGameScene.classList.add('play-center')
+
+      // เริ่มเกมได้
+      startGamePlay()
+    })
+
+    restartGameButton.addEventListener('click', () => {
+      playGameScene.classList.add('hidden')
+      playGameScene.classList.remove('play-center')
+      startGameScene.classList.remove('hidden')
+
+      localStorage.clear()
+      location.reload()
+    })
+
+    restartEndGameButton.addEventListener('click', () => {
+      endGameScene.classList.add('hidden')
+      playGameScene.classList.remove('hidden')
+      playGameScene.classList.add('play-center')
+
+      startGamePlay()
+    })
+
+    window.onload = () => {
+      state = localStorage.getItem('state')
+      if (state === 'playing') {
+        startButton.click()
+      }
+    }
+
+    // 3. มีการตรวจสอบคำตอบผ่าน Function Javascript
+    // 4. มี alert เมื่อคำตอบออกมาถูกต้อง (BOM)
+    // 5. มีการเก็บข้อมูลของเว็บเอาไว้ เมื่อ refresh web = เว็บจะยังสามารถเล่นต่อได้ใน Browser เดิม (Web storage)
+
+  </script>
+</body>
+</html>

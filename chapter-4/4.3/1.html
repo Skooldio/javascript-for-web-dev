@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const loadData = async () => {
+      const apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto'
+      try {
+        const response = await fetch(apiUrl)
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`)
+        }
+        const data = await response.json()
+        console.log('data', data)
+      } catch (error) {
+        console.error('Fetch error:', error.message)
+      }
+    }
+
+    loadData()
+  </script>
+</body>
+</html>

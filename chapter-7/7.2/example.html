@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    Your saved name: <span id="savedName"></span>
+  </div>
+  New name <input id="newname" type="text">
+  <div>
+    <button onclick="saveToLocal()">Save</button>
+    <button onclick="clearLocal()">Clear</button>
+  </div>
+  <script>
+    const newNameElem = document.getElementById('newname')
+
+    const saveToLocal = () => {
+      localStorage.setItem('fullname', newNameElem.value)
+      retrieveFromLocal()
+    }
+
+    const retrieveFromLocal = () => {
+      document.getElementById('savedName').textContent = localStorage.getItem('fullname')
+    }
+
+    const clearLocal = () => {
+      document.getElementById('savedName').textContent = ''
+      localStorage.clear()
+    }
+
+    // จังหวะ load ครั้งแรก = ให้ดึงข้อมูลจาก localstorage มาใส่
+    window.onload = () => {
+      retrieveFromLocal()
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>Timeout message will appear after 5 seconds:</p>
+  <div id="timeoutMsg"></div>
+
+  <p>Interval counter (updates every second):</p>
+  <div id="intervalCounter">0</div>
+
+  <script>
+    const timeoutElem = document.getElementById('timeoutMsg')
+    const counterElem = document.getElementById('intervalCounter')
+    // Use setTimeout to display a message after 5 seconds
+    setTimeout(() => {
+      timeoutElem.textContent = 'This message is shown after 5 seconds!'
+    }, 5000)
+
+    // Use setInterval to update a counter every second
+    let count = 0
+    setInterval(() => {
+      count++
+      counterElem.textContent = count
+    }, 1000)
+  </script>
+</body>
+</html>

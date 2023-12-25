@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="test" data-id="example">Test</div>
+  <button data-name="test">Submit</button>
+
+  <script>
+    const testElem = document.getElementById('test')
+    const buttonElem = document.querySelector('button')
+
+    console.log(testElem.dataset.id) // example
+    console.log(buttonElem.dataset.name) // test
+  </script>
+</body>
+</html>

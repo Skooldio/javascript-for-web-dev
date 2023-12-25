@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Email Address Validation</title>
+</head>
+<body>
+  <form onsubmit="return validateForm()">
+    <label for="fullname">Full Name:</label>
+    <input type="text" id="fullname" name="fullname" required>
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required>
+    <div>
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+
+  <script>
+    const validateForm = () => {
+      const emailInput = document.getElementById('email').value
+      const fullNameInput = document.getElementById('fullname').value
+
+      const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
+      const regexFullName = /^[a-zA-Z\s]+$/
+
+      if (!regexEmail.test(emailInput)) {
+        alert('The email address is not valid!')
+        return false
+      }
+
+      // Check full name
+      if (!regexFullName.test(fullNameInput)) {
+        alert('The full name is not valid! It should not contain numbers.')
+        return false
+      }
+      alert('Form is valid !')
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SPA Navigation Example</title>
+</head>
+<body>
+  <div id="content">
+    <!-- วาง Content ตรงนี้ -->
+  </div>
+
+  <nav>
+    <button onclick="navigateTo('push.html')">Home</button>
+    <button onclick="navigateTo('new-2.html')">New Page</button>
+  </nav>
+
+  <script>
+  // สร้าง function เปลี่ยนหน้า
+  const navigateTo = (page) => {
+    let content
+    const url = page
+
+    if (page === 'new-2.html') {
+      content = 'new-2.html content'
+    } else {
+      content = 'push.html'
+    }
+
+    document.getElementById('content').innerHTML = content
+    history.pushState({ page: page }, '', url)
+  }
+
+  // Event listener สำหรับ popstate
+  window.addEventListener('popstate', function(event) {
+    if (event.state && event.state.page) {
+      // ได้รับหน้าใหม่มา (จากการกด pushState) = เปลี่ยนหน้า
+      navigateTo(event.state.page)
+    }
+  })
+
+  // ประกาศ history เริ่มต้น
+  document.addEventListener('DOMContentLoaded', function() {
+    history.replaceState({ page: 'push.html' }, '', 'push.html')
+    navigateTo('push.html')
+  })
+  </script>
+</body>
+</html>

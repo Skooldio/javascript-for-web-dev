@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const postData = async (data) => {
+      const apiUrl = 'https://64ffc48218c34dee0cd3ef15.mockapi.io/todos'
+      try {
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`)
+        }
+        const data = await response.json()
+        console.log('data', data)
+      } catch (error) {
+        console.error('Fetch error:', error.message)
+      }
+    }
+
+    postData({
+      name: 'test new data',
+      status: 'pending'
+    })
+  </script>
+</body>
+</html> 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Alert and Prompt Example</title>
+</head>
+<body>
+
+<button onclick="showAlert()">Show Name</button>
+<button onclick="showPrompt()">Add Name (with Prompt)</button>
+
+<script>
+  let currentName = ''
+
+  const showAlert = () => {
+    window.alert(`Your name: ${currentName}`)
+  }
+
+  const showPrompt = () => {
+    const name = window.prompt('Please enter your name:', 'Your name here')
+    if (name) {
+      currentName = name
+      window.alert(`Hello, ${name}`)
+    }
+  }
+</script>
+
+</body>
+</html>

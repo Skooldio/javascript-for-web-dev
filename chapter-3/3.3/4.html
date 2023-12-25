@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <img src="test.jpg">
+  <input id="test" type="text">
+  <button onclick="changeImage()">Change image</button>
+
+  <script>
+    const changeImage = () => {
+      const inputElem = document.querySelector('input')
+      const imgElem = document.querySelector('img')
+
+      imgElem.setAttribute('src', inputElem.value)
+    }
+  </script>
+</body>
+</html>

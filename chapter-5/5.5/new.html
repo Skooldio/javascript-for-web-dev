@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>This is new.html</div>
+  <button id="back">Back</button>
+  <script>
+    const backElem = document.getElementById('back')
+    backElem.onclick = () => {
+      window.history.back()
+    }
+    console.log(window.history.state)
+
+    // window.addEventListener('popstate', function(event) {
+    //   if (event.state) {
+    //     // Handle the state if needed
+    //     console.log(event.state);
+    //   }
+    //   // This is a simple simulation: when popping state, reload the page
+    //   location.reload();
+    // });
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form id="myForm">
+    <!-- ว่าต้องใส่ require -->
+    <input type="text" name="username">
+    <button>Submit</button>
+  </form>
+  <div id="errorMsg" style="color: red"></div>
+  <script>
+    const myForm = document.getElementById('myForm')
+    const errorMsg = document.getElementById('errorMsg')
+
+    myForm.addEventListener('submit', (event) => {
+      // ทำการ break event submit ไม่ให้ทำงานเอง
+      event.preventDefault()
+
+      const usernameElem = document.querySelector('input[name=username]')
+      let errorMessage = ''
+      if (!usernameElem.value) {
+        errorMessage = 'Require username'
+      }
+
+      if (errorMessage) {
+        // validate ไม่ผ่าน = แสดง error message
+        errorMsg.innerText = errorMessage
+      } else {
+        // validate ผ่าน = submit form
+        event.target.submit()
+      }
+    })
+  </script>
+</body>
+</html>
