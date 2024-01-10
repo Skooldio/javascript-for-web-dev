@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Persistent Input</title>
+  </head>
+  <body>
+    <h1>Persistent Text Input</h1>
+    <input type="text" id="persistent-input" placeholder="Type something..." />
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const inputField = document.getElementById('persistent-input')
+
+        // Load saved data from localStorage
+        inputField.value = localStorage.getItem('savedInput') || ''
+
+        // Save data to localStorage when the user types
+        inputField.addEventListener('input', () => {
+          localStorage.setItem('savedInput', inputField.value)
+        })
+      })
+    </script>
+  </body>
+</html>

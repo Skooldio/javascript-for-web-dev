@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List Modification Example</title>
+  </head>
+  <body>
+    <input type="text" id="itemInput" placeholder="Enter new item" />
+    <button id="addItemButton">Add Item</button>
+
+    <ul id="itemList">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+
+    <script>
+      const itemInput = document.getElementById('itemInput')
+      const addItemButton = document.getElementById('addItemButton')
+      const itemList = document.getElementById('itemList')
+
+      addItemButton.addEventListener('click', function () {
+        const newItemText = itemInput.value.trim()
+
+        if (newItemText !== '') {
+          const newItem = document.createElement('li')
+          newItem.textContent = newItemText
+
+          // [1]
+          itemList.appendChild(newItem, itemList.firstChild)
+
+          // [2]
+          // itemList.insertBefore(newItem, itemList.firstChild)
+
+          itemInput.value = ''
+        }
+      })
+    </script>
+  </body>
+</html>

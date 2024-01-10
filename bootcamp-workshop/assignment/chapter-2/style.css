@@ -1,0 +1,17 @@
+.hidden {
+  display: none;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav li {
+  margin: 5px 0;
+}
+
+/* Simple styles for demonstration */
+button {
+  margin: 10px 0;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus Event Example</title>
+  </head>
+  <body>
+    <input type="text" id="email">
+    <div id="displayText" style="display: none;">
+      Please use your corporate email.
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const focusDiv = document.getElementById('email')
+        const displayText = document.getElementById('displayText')
+
+        focusDiv.addEventListener('click', function () {
+          displayText.style.display = 'block'
+        })
+
+        displayText.addEventListener('click', function () {
+          displayText.style.display = 'none'
+        })
+      })
+    </script>
+  </body>
+</html>

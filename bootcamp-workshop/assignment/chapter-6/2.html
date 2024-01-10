@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Validation</title>
+  </head>
+  <body>
+    <h1>Password Validation</h1>
+    <form id="password-form">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit">Submit</button>
+      <p id="password-validation-message"></p>
+    </form>
+
+    <script>
+      // case 1
+      document
+        .getElementById('password-form')
+        .addEventListener('submit', function (event) {
+          event.preventDefault()
+
+          const password = document.getElementById('password').value
+          const validationMessage = document.getElementById(
+            'password-validation-message'
+          )
+
+          if (password.length < 8) {
+            validationMessage.textContent =
+              'Password must be at least 8 characters.'
+            return
+          }
+
+          let hasUpperCase = false
+          let hasLowerCase = false
+          let hasNumber = false
+
+          for (let i = 0; i < password.length; i++) {
+            const character = password[i]
+            if (isUpperCase(character)) hasUpperCase = true
+            if (isLowerCase(character)) hasLowerCase = true
+            if (isNumber(character)) hasNumber = true
+          }
+
+          if (!hasUpperCase || !hasLowerCase) {
+            validationMessage.textContent =
+              'Password must include both capital and small letters.'
+            return
+          }
+
+          if (!hasNumber) {
+            validationMessage.textContent =
+              'Password must contain at least one number.'
+            return
+          }
+
+          validationMessage.textContent = 'Password is valid!'
+        })
+
+      function isUpperCase(char) {
+        return char >= 'A' && char <= 'Z'
+      }
+
+      function isLowerCase(char) {
+        return char >= 'a' && char <= 'z'
+      }
+
+      function isNumber(char) {
+        return char >= '0' && char <= '9'
+      }
+    </script>
+    <script>
+      document
+        .getElementById('password-form')
+        .addEventListener('submit', function (event) {
+          event.preventDefault()
+
+          const password = document.getElementById('password').value
+          const validationMessage = document.getElementById(
+            'password-validation-message'
+          )
+
+          if (password.length < 8) {
+            validationMessage.textContent =
+              'Password must be at least 8 characters.'
+            return
+          }
+
+          if (!/[A-Z]/.test(password) || !/[a-z]/.test(password)) {
+            validationMessage.textContent =
+              'Password must include both capital and small letters.'
+            return
+          }
+
+          if (!/\d/.test(password)) {
+            validationMessage.textContent =
+              'Password must contain at least one number.'
+            return
+          }
+
+          validationMessage.textContent = 'Password is valid!'
+        })
+    </script>
+  </body>
+</html>

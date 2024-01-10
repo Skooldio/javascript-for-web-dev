@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Move List Items</title>
+  </head>
+  <body>
+    <ul id="itemList">
+      <li>
+        <button class="up">Up</button>
+        <button class="down">Down</button>
+        Item 1
+      </li>
+      <li>
+        <button class="up">Up</button>
+        <button class="down">Down</button>
+        Item 2
+      </li>
+      <li>
+        <button class="up">Up</button>
+        <button class="down">Down</button>
+        Item 3
+      </li>
+    </ul>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const itemList = document.getElementById('itemList')
+        const upButtons = document.querySelectorAll('.up')
+        const downButtons = document.querySelectorAll('.down')
+
+        upButtons.forEach(function (button) {
+          button.addEventListener('click', function () {
+            const item = this.parentNode
+            const prev = item.previousElementSibling
+            if (prev) {
+              itemList.insertBefore(item, prev)
+            }
+          })
+        })
+
+        downButtons.forEach(function (button) {
+          button.addEventListener('click', function () {
+            const item = this.parentNode
+            const next = item.nextElementSibling
+            if (next) {
+              itemList.insertBefore(next, item)
+            }
+          })
+        })
+      })
+    </script>
+  </body>
+</html>

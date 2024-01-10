@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Age Verification</title>
+  </head>
+  <body>
+    <h1>Enter Your Birthdate</h1>
+    <form id="birthdate-form">
+      <label for="birthdate">Birthdate:</label>
+      <input type="date" id="birthdate" name="birthdate" required />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      document
+        .getElementById('birthdate-form')
+        .addEventListener('submit', function (event) {
+          event.preventDefault()
+
+          const birthdateInput = document.getElementById('birthdate').value
+          const birthdate = new Date(birthdateInput)
+          const today = new Date()
+          let age = today.getFullYear() - birthdate.getFullYear()
+          const month = today.getMonth() - birthdate.getMonth()
+
+          if (month < 0 || (month === 0 && today.getDate() < birthdate.getDate())) {
+            // [1]
+            age--
+            // [2]
+            age++
+          }
+
+          if (age >= 18) {
+            alert('You are over 18.')
+          } else {
+            alert('You are under 18.')
+          }
+        })
+    </script>
+  </body>
+</html>

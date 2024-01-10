@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toggle Button Example</title>
+    <style>
+      button {
+        padding: 10px 20px;
+      }
+      .active {
+        color: white;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="toggleButton">Click Me</button>
+
+    <script>
+      const toggleButton = document.getElementById('toggleButton')
+
+      toggleButton.addEventListener('click', function () {
+        if (this.classList.contains('active')) {
+          this.classList.remove('active')
+        } else {
+          this.classList.add('active')
+        }
+      })
+    </script>
+  </body>
+</html>

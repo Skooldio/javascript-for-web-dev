@@ -1,0 +1,57 @@
+<!-- นี่คือ DOM ที่ต้องการ Access -->
+<input id="first" name="firstname" class="input" />
+
+ข้อใดต่อไปนี้ถูกต้อง
+<script>
+  document.getElementById('first')
+
+  document.querySelector('input[name=firstname]')
+
+  document.getElementsByClassName('input')
+</script>
+
+<div class="container">
+  <div class="item">Item 1</div>
+  <div class="item">Item 2</div>
+  <div class="item">Item 3</div>
+</div>
+
+<div class="item">Item Don't need</div>
+
+<script>
+  document.querySelector('.container > .item')
+
+  document.getElementsByClassName('item')
+
+  document.querySelectorAll('.container > .item')
+</script>
+
+<div class="interest">
+  <div>Interest</div>
+  <input type="radio"
+    name="interest"
+    value="football" /> Football
+  <input type="radio"
+    name="interest"
+    value="badminton"
+    checked /> Badminton
+</div>
+
+<div class="gender">
+  <div>Gender</div>
+  <input type="radio"
+    name="gender"
+    value="male" /> Male
+  <input type="radio"
+    name="gender"
+    value="female"
+    checked /> Female
+</div>
+
+<script>
+  document.querySelector('.interest input[value="badminton"]')
+
+  document.querySelector('.interest input:checked')
+
+  document.querySelector('.interest input[name="interest"]:checked')
+</script>
