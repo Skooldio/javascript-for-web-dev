@@ -20,8 +20,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <!-- Mike: import component -->
-    <script type="module" src="/src/components/MyNavbar.js"></script>
   </head>
   <body class="bg-wd-black">
     <!-- ข้อที่ 4: เพิ่ม navbar และ link ไปยังอีกหน้า -->
@@ -58,40 +56,13 @@
       >
         Features
       </div>
+      <!-- 1 (Adv): ปรับส่วน Feature ให้ดึงจาก JSON -->
       <section
         class="flex flex-col items-center justify-center gap-6 w-full text-white"
+        id="feature-container"
       >
-        <div class="flex gap-6 w-full">
-          <img
-            src="../assets/features/image-bootcamp-feature-1.png"
-            alt="feature image 1"
-          />
-          <div class="flex flex-col gap-4 bg-wd-darkgrey p-6 grow">
-            <h3 class="text-2xl font-semibold">City Skyline</h3>
-            <p class="text-2xl font-light">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed
-              euismod diam. In pretium in odio at pretium. Aenean in suscipit
-              enim. Aliquam lacus nulla, dapibus a eleifend sed, gravida sit
-              amet justo. Nulla vel diam at orci semper mattis.
-            </p>
-          </div>
-        </div>
-        <div class="flex flex-row-reverse gap-6 w-full">
-          <img
-            src="../assets/features/image-bootcamp-feature-2.png"
-            alt="feature image 2"
-          />
-          <div class="flex flex-col gap-4 bg-wd-darkgrey p-6 grow">
-            <h3 class="text-2xl font-semibold">Corporate Stockphoto</h3>
-            <p class="text-2xl font-light">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed
-              euismod diam. In pretium in odio at pretium. Aenean in suscipit
-              enim. Aliquam lacus nulla, dapibus a eleifend sed, gravida sit
-              amet justo. Nulla vel diam at orci semper mattis.
-            </p>
-          </div>
-        </div>
       </section>
+      <!-- 1 (Adv): จบส่วนดึง Feature -->
 
       <!-- 1: เก็บข้อมูล Blog เป็นรูปแบบ JSON และทำการดึงข้อมูลมาใช้งาน -->
       <div
@@ -109,6 +80,7 @@
 
       <!-- 1: จบส่วนที่เพิ่มมา -->
 
+      <!-- 1 (Adv): ปรับส่วน Work ให้ดึงจาก JSON -->
       <div
         class="w-full text-primary text-4xl font-semibold flex items-center gap-10 my-12 before:content-[''] before:h-px before:bg-primary before:grow after:content-[''] after:h-px after:bg-primary after:grow"
       >
@@ -117,39 +89,10 @@
       <section
         class="flex flex-col items-center justify-center gap-6 w-full text-white"
       >
-        <div class="w-full grid grid-cols-3 place-items-center gap-6">
-          <img
-            src="../assets/grid/image-bootcamp-1.png"
-            alt="grid image 1"
-            class="w-full object-cover"
-          />
-          <img
-            src="../assets/grid/image-bootcamp-2.png"
-            alt="grid image 2"
-            class="w-full object-cover"
-          />
-          <img
-            src="../assets/grid/image-bootcamp-3.png"
-            alt="grid image 3"
-            class="w-full object-cover"
-          />
-          <img
-            src="../assets/grid/image-bootcamp-4.png"
-            alt="grid image 4"
-            class="w-full object-cover"
-          />
-          <img
-            src="../assets/grid/image-bootcamp-5.png"
-            alt="grid image 5"
-            class="w-full object-cover"
-          />
-          <img
-            src="../assets/grid/image-bootcamp-6.png"
-            alt="grid image 6"
-            class="w-full object-cover"
-          />
+        <div id="work-container" class="w-full grid grid-cols-3 place-items-center gap-6">
         </div>
       </section>
+      <!-- 1 (Adv): จบส่วนดึง Work -->
 
       <div
         class="w-full text-primary text-4xl font-semibold flex items-center gap-10 my-12 before:content-[''] before:h-px before:bg-primary before:grow after:content-[''] after:h-px after:bg-primary after:grow"
@@ -309,7 +252,8 @@
       }
     </script>
     <!-- 1. ส่วนที่เพิ่มมาสำหรับการดึง Blog -->
-    <script src="../scripts/blog-utils.js"></script>
+    <script src="/scripts/blog-utils.js"></script>
+    <script src="/scripts/content-utils.js"></script>
     <!-- 1. จบส่วนที่เพิ่มมา -->
   </body>
 </html>

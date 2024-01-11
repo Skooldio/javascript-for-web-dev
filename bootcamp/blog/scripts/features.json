@@ -1,0 +1,14 @@
+[
+  {
+    "imageUrl": "/assets/features/image-bootcamp-feature-1.png",
+    "title": "City Skyline",
+    "altText": "feature image 1",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sedeuismod diam. In pretium in odio at pretium. Aenean in suscipitenim. Aliquam lacus nulla, dapibus a eleifend sed, gravida sitamet justo. Nulla vel diam at orci semper mattis."
+  },
+  {
+    "imageUrl": "/assets/features/image-bootcamp-feature-2.png",
+    "title": "Corporate Stockphoto",
+    "altText": "feature image 2",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sedeuismod diam. In pretium in odio at pretium. Aenean in suscipitenim. Aliquam lacus nulla, dapibus a eleifend sed, gravida sitamet justo. Nulla vel diam at orci semper mattis."
+  }
+]

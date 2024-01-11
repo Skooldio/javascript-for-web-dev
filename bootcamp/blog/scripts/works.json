@@ -1,0 +1,22 @@
+[
+  {
+    "imageUrl": "/assets/grid/image-bootcamp-1.png",
+    "altText": "grid image 1"
+  },
+  {
+    "imageUrl": "/assets/grid/image-bootcamp-2.png",
+    "altText": "grid image 2"
+  },
+  {
+    "imageUrl": "/assets/grid/image-bootcamp-3.png",
+    "altText": "grid image 3"
+  },
+  {
+    "imageUrl": "/assets/grid/image-bootcamp-4.png",
+    "altText": "grid image 4"
+  },
+  {
+    "imageUrl": "/assets/grid/image-bootcamp-5.png",
+    "altText": "grid image 5"
+  }
+]
