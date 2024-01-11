@@ -49,3 +49,40 @@ async function main() {
 }
 
 main()
+
+
+/* ข้อ 2: สามารถค้นหาและเรียงข้อมูลตามเวลาได้ */
+let typingTimer
+const doneTypingInterval = 1000
+
+// for use in HTML
+function searchBlogs(element) {
+  clearTimeout(typingTimer) // Clear the timer so it starts fresh
+  const searchTerm = element.value
+  blogContainer.innerHTML = 'Loading...'
+  typingTimer = setTimeout(function () {
+    blogContainer.innerHTML = ''
+    const filteredBlogs = blogsData.filter((blog) =>
+      blog.title.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    createBlog(filteredBlogs)
+  }, doneTypingInterval)
+}
+
+
+function sortBlogs(element) {
+  blogContainer.innerHTML = ''
+  const sortBy = element.value
+  const sortedBlogs = [...blogsData].sort((a, b) => {
+    let dateA = new Date(a.publishedDate)
+    let dateB = new Date(b.publishedDate)
+    if (sortBy === 'asc') {
+      return dateA - dateB
+    } else {
+      return dateB - dateA
+    }
+  })
+  createBlog(sortedBlogs)
+}
+
+/* ข้อ 2: จบส่วน code */
