@@ -20,11 +20,35 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <!-- Import the Web Component -->
-    <script type="module" src="/src/components/MyNavbar.js"></script>
   </head>
   <body class="bg-wd-black">
-    <my-navbar></my-navbar>
+    <!-- ข้อที่ 4: เพิ่ม navbar และ link ไปยังอีกหน้า -->
+    <nav class="bg-wd-darkgrey text-white">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between">
+          <div class="flex space-x-4 px-2">
+            <div class="flex items-center space-x-1">
+              <a href="/src/index.html" class="py-5 px-3 hover:text-gray-100"
+                >Home</a
+              >
+              <a href="/src/blogs.html" class="py-5 px-3 hover:text-gray-100"
+                >Blog</a
+              >
+            </div>
+          </div>
+          <div class="flex items-center space-x-1">
+            <select
+              id="language-switcher"
+              class="py-2 px-3 bg-transparent border border-gray-300 rounded hover:border-gray-400"
+            >
+              <option value="en">English</option>
+              <option value="th">Thailand</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- จบข้อที่ 4: เพิ่ม navbar และ link ไปยังอีกหน้า -->
     <header
       class="h-[400px] w-full flex flex-col justify-center items-center text-primary gap-4 bg-hero-pattern bg-center bg-cover bg-no-repeat"
     >
